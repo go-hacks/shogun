@@ -45,8 +45,6 @@ func reader(conn net.Conn, val int) {
 		_, err := bufio.NewReader(conn).Read(p)
 		if err == nil {
 			writer(byte(val))
-		} else {
-			fmt.Printf("Reader error %d %v", val, err)
 		}
 	}
 }
