@@ -1,5 +1,5 @@
 # shogun
-Go Shotgun - Sends data across network without connections or packet data
+Go Shotgun
 
 Proof of concept to send data across a network without actually making any TCP connections or transmitting any data in the UDP packets.
 Naturally, it is rather slow, about 100bytes/s on my local machine. 
