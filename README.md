@@ -5,7 +5,7 @@ Proof of concept to send data across a network without actually making any TCP c
 
 Naturally, it is rather slow, about 100bytes/s on my local machine.
 
-It could be faster with more ports but the math would be very weird as even 2 bytes would require all existing ports and generally wouldn't work or you'd have to use multiple file readers but then positional and file size data would have to be communicated as well (probably down the first set of 256). Then you could have several 256 port byte streams and theoretically multiply the speed to upwards of 20KB on a local network.
+It could be faster with more ports but the math would be very weird as even 2 bytes would require all existing ports and generally wouldn't work or you'd have to use multiple file readers but then positional and file size data would have to be communicated as well (probably down the first set of 256). Then you could have several 256 port byte streams and theoretically multiply the speed to upwards of 20KB/s on a local network.
 
 Note: Sleep delay may need to be increased if on a slower network so that packets don't arrive out of order.
 This will decrease transfer speeds but necessary if your network has high jitter (inconsistent ping).
