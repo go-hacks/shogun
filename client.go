@@ -22,30 +22,36 @@ func main() {
 	}
 	fmt.Printf("Starting readers...")
 	for i := 0; i < 256; i++ {
-		go reader(conn[i], i)
+		go reader(conn[i], i, conn[256])
+	}
+	fmt.Printf("Done.\n")
+	fmt.Printf("Initializing connections...")
+	for i := 0; i < 256; i++ {
+		fmt.Fprintf(conn[i], "")
 	}
 	fmt.Printf("Done.\n")
 	fmt.Printf("Sending start signal...")
-	for i := 0; i < 257; i++ {
-		fmt.Fprintf(conn[i], "")
-	}
+	fmt.Fprintf(conn[256], "")
 	fmt.Printf("Done.\n")
 	fmt.Printf("Receiving file...")
 	outFile, _ := os.Create("testfile")
 	outFile.Close()
 	p :=  make([]byte, 1)
+	// Wait for server to send end of file signal
 	_, _ = bufio.NewReader(conn[256]).Read(p)
 	fmt.Printf("Complete!\n")
 	return
 }
 
-func reader(conn net.Conn, val int) {
+func reader(conn net.Conn, val int, nextConn net.Conn) {
 	for {
 		p :=  make([]byte, 1)
 		_, err := bufio.NewReader(conn).Read(p)
 		if err == nil {
 			writer(byte(val))
 		}
+		// Send signal for next byte
+		fmt.Fprintf(nextConn, "")
 	}
 }
 
