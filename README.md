@@ -3,11 +3,20 @@ Go Shotgun
 
 Proof of concept to send data across a network without actually making any TCP connections or transmitting any data in the packets.
 
-Build with chmod +x build && ./build
+Build with
+```
+chmod +x build && ./build
+```
 
-Start server with ./server fileName
+Start server with
+```
+./server fileName
+```
 
-Begin file transfer with ./client
+Begin file transfer with
+```
+./client
+```
 
 Naturally, it is rather slow, about 12KB/s on my local machine.
 
